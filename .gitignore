@@ -1,5 +1,10 @@
-﻿credentials.json
-bin
-obj
-logs
-Files/Images/Luigi/*
+﻿.git
+.vs
+.gitattributes
+DiscordBotCS.sln
+DiscordBotCS/credentials.json
+DiscordBotCS/bin
+DiscordBotCS/obj
+DiscordBotCS/logs
+DiscordBotCS/Files/Images/Mario/*
+DiscordBotCS/Files/Images/Luigi/*
