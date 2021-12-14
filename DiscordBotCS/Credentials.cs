@@ -10,7 +10,12 @@ namespace DiscordBotCS
 {
     public class Credentials
     {
-        public string token { get; set; } = String.Empty;
+        [JsonPropertyName("bot-token")]
+        public string token { get; set; } = string.Empty;
+        [JsonPropertyName("dictionary-api-key")]
+        public string dictionaryApiKey { get; set; } = string.Empty;
+        [JsonPropertyName("thesaurus-api-key")]
+        public string thesaurusApiKey { get; set; } = string.Empty;
 
         public static Credentials GetCredentials(string path = "credentials.json")
         {
