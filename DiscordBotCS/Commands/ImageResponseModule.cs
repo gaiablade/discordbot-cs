@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 
-namespace DiscordBot.Commands
+namespace DiscordBotCS.Commands
 {
     public class ImageResponseModule : ModuleBase<SocketCommandContext>
     {
@@ -17,7 +17,7 @@ namespace DiscordBot.Commands
         [Command("luigi")]
         public async Task LuigiImageAsync()
         {
-            var randomIndex = DiscordBot.Random.Next(luigiImageFilenames.Length);
+            var randomIndex = DiscordBot.GetRandomNumber(luigiImageFilenames.Length);
             var imageFilename = luigiImageFilenames[randomIndex];
 
             await Context.Channel.SendFileAsync(filePath: imageFilename, 
@@ -28,11 +28,20 @@ namespace DiscordBot.Commands
         [Command("mario")]
         public async Task MarioImageAsync()
         {
-            var randomIndex = DiscordBot.Random.Next(marioImageFilenames.Length);
+            var randomIndex = DiscordBot.GetRandomNumber(marioImageFilenames.Length);
             var imageFilename = marioImageFilenames[randomIndex];
 
             await Context.Channel.SendFileAsync(filePath: imageFilename,
                 text: "Here's a Mario :D",
+                messageReference: new MessageReference(Context.Message.Id));
+        }
+
+        [Command("drip")]
+        public async Task DripRigbyImageAsync()
+        {
+            var imageFilename = "Files/Images/DripRigby.jpg";
+            await Context.Channel.SendFileAsync(filePath: imageFilename,
+                text: "DRIP RIGBY",
                 messageReference: new MessageReference(Context.Message.Id));
         }
     }
