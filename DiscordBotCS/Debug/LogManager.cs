@@ -53,6 +53,7 @@ namespace DiscordBotCS.Debug
             var dateTime = DateTime.Now;
             string logMessage = $"{dateTime.ToString("MM/dd/yyyy H:mm:ss.fff")} [DISCORD] -> {log.ToString()}";
 
+            Console.WriteLine(logMessage);
             file.WriteLine(logMessage);
             return Task.CompletedTask;
         }
