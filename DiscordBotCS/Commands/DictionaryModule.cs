@@ -60,24 +60,6 @@ namespace DiscordBotCS.Commands
                     var wordsAndDefinitions = relevantWords.Select((word, index) => $"{index + 1}) {word.Metadata.id} - {string.Join(";\n\t- ", word.Definitions)}");
                     await ReplyAsync(string.Join('\n', wordsAndDefinitions));
                 }
-                catch (ArgumentNullException ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                    await ReplyAsync($"An error occured while processing your request:\n {ex.Message}");
-                    return;
-                }
-                catch (JsonException ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                    await ReplyAsync($"An error occured while processing your request:\n {ex.Message}");
-                    return;
-                }
-                catch (NotSupportedException ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                    await ReplyAsync($"An error occured while processing your request:\n {ex.Message}");
-                    return;
-                }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
