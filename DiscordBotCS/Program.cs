@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +23,8 @@ namespace DiscordBotCS
         public static LogManager LogManager { get; private set; } = new LogManager(@"logs\bot\Discord Bot - [DT].txt");
         public static RandomNumberGenerator RandomNumberGenerator { get; private set; } = RandomNumberGenerator.Create();
         public static DiscordSocketClient? Client { get; private set; }
+        public static Credentials Credentials { get; private set; } = Credentials.GetCredentials("credentials.json");
+        public static HttpClient HttpClient { get; private set; } = new HttpClient();
         private CommandService? commandService;
 
         // Program Entry-Point
@@ -29,16 +33,13 @@ namespace DiscordBotCS
 
         public async Task MainAsync()
         {
-            // Import credentials (bot token) from file
-            Credentials credentials = Credentials.GetCredentials("credentials.json");
-
             // Create bot Client to receive and respond to messages
             Client = new DiscordSocketClient();
             Client.Log += LogManager.LogDiscordMessage; // Assigns function that handles any log messages the bot receives
             Client.MessageReceived += HandleMessageReceivedAsync; // Assigns function that handles messages the bot receives
 
             // Login and start bot
-            await Client.LoginAsync(TokenType.Bot, credentials.token);
+            await Client.LoginAsync(TokenType.Bot, Credentials.token);
             await Client.StartAsync();
 
             // Create command service, find and load all commands
