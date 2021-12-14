@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace DiscordBot
+namespace DiscordBotCS
 {
     public class Credentials
     {
-        public string token { get; set; }
+        public string token { get; set; } = String.Empty;
 
         public static Credentials GetCredentials(string path = "credentials.json")
         {

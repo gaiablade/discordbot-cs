@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Discord;
 
-namespace DiscordBot.Debug
+namespace DiscordBotCS.Debug
 {
     public class LogManager
     {
