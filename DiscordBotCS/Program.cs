@@ -20,6 +20,7 @@ namespace DiscordBotCS
 {
     public class DiscordBot
     {
+        // Static objects belong to the class instead of an instance of the class
         public static LogManager LogManager { get; private set; } = new LogManager(@"logs\bot\Discord Bot - [DT].txt");
         public static RandomNumberGenerator RandomNumberGenerator { get; private set; } = RandomNumberGenerator.Create();
         public static DiscordSocketClient? Client { get; private set; }
