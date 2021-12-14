@@ -2,6 +2,7 @@
 
 namespace DiscordBotCS.HttpResponseTemplates
 {
+    // JsonSerializer will use this template to parse the json data from the dictionary API
     public class Meta
     {
         public string id { get; set; }
