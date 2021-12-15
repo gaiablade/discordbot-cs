@@ -2,7 +2,7 @@
 
 using Discord.Commands;
 
-using DiscordBotCS.HttpResponseTemplates;
+using DiscordBotCS.HttpResponseTemplates.WebsterDictionaryResponse;
 
 namespace DiscordBotCS.Commands
 {
@@ -13,7 +13,7 @@ namespace DiscordBotCS.Commands
         private static string url = @"https://www.dictionaryapi.com/api/v3/references/collegiate/json/[WORD]?key=[APIKEY]";
 
         [Command("def")]
-        public async Task DefinitionAsync(string word)
+        public async Task DefinitionAsync([Remainder]string word)
         {
             await Task.Run(async () =>
             {

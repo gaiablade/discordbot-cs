@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace DiscordBotCS.HttpResponseTemplates
+namespace DiscordBotCS.HttpResponseTemplates.WebsterDictionaryResponse
 {
     // JsonSerializer will use this template to parse the json data from the dictionary API
     public class Meta

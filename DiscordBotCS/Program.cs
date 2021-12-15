@@ -61,6 +61,7 @@ namespace DiscordBotCS
 
             // Check if message is a command and isn't coming from another bot
             if (!(message.HasCharPrefix('!', argPos: ref argPos)
+                || message.HasCharPrefix('_', argPos: ref argPos)
                 || message.HasMentionPrefix(Client?.CurrentUser, ref argPos))
                 || message.Author.IsBot)
                 return;
