@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace DiscordBotCS.HttpResponseTemplates.WebsterDictionaryResponse
 {
@@ -22,5 +23,11 @@ namespace DiscordBotCS.HttpResponseTemplates.WebsterDictionaryResponse
         public List<string> Definitions { get; set; }
         public string fl { get; set; }
         public string date { get; set; }
+
+        public static WebsterDictionaryResponse[] GetWebsterDictionaryData(string json)
+        {
+            var data = JsonSerializer.Deserialize<WebsterDictionaryResponse[]>(json);
+            return data ?? new WebsterDictionaryResponse[] { };
+        }
     }
 }

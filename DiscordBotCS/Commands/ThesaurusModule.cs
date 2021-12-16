@@ -1,7 +1,4 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-
-using Discord.Commands;
+﻿using Discord.Commands;
 
 using DiscordBotCS.HttpResponseTemplates.WebsterThesaurusResponse;
 
@@ -39,7 +36,7 @@ namespace DiscordBotCS.Commands
 
                 try
                 {
-                    var apiResponse = JsonSerializer.Deserialize<WebsterThesaurusResponse[]>(json, new JsonSerializerOptions() { AllowTrailingCommas = true });
+                    var apiResponse = WebsterThesaurusResponse.GetSynonyms(json);
 
                     if (apiResponse == null)
                     {

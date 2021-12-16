@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 
 namespace DiscordBotCS.HttpResponseTemplates.WebsterThesaurusResponse
 {
@@ -38,10 +34,10 @@ namespace DiscordBotCS.HttpResponseTemplates.WebsterThesaurusResponse
     public class WebsterThesaurusResponse
     {
         public Meta meta { get; set; }
-        //public Hwi hwi { get; set; }
-        //public string fl { get; set; }
-        //public List<Def> def { get; set; }
-        //public List<string> shortdef { get; set; }
-        //public List<string> sls { get; set; }
+
+        public static WebsterThesaurusResponse[] GetSynonyms(string json)
+        {
+            return JsonSerializer.Deserialize<WebsterThesaurusResponse[]>(json) ?? new WebsterThesaurusResponse[] { };
+        }
     }
 }
