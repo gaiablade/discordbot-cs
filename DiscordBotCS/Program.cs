@@ -5,6 +5,7 @@ using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 
+using DiscordBotCS.DatabaseInteraction;
 using DiscordBotCS.Debug;
 
 namespace DiscordBotCS
@@ -29,6 +30,7 @@ namespace DiscordBotCS
             Client = new DiscordSocketClient();
             Client.Log += LogManager.LogDiscordMessage; // Assigns function that handles any log messages the bot receives
             Client.MessageReceived += HandleMessageReceivedAsync; // Assigns function that handles messages the bot receives
+            Client.GuildMemberUpdated += HandleGuildMemberUpdatedAsync;
 
             // Login and start bot
             await Client.LoginAsync(TokenType.Bot, Credentials.token);
@@ -78,6 +80,16 @@ namespace DiscordBotCS
             // Search for corresponding command and execute it
             var context = new SocketCommandContext(Client, message);
             await commandService.ExecuteAsync(context: context, argPos: argPos, services: null);
+        }
+
+        public async Task HandleGuildMemberUpdatedAsync(SocketGuildUser before, SocketGuildUser after)
+        {
+            if (before.IsBot) return;
+            var userId = after.Id;
+            var beforeGame = before.Activities.Where(a => a.Type == ActivityType.Playing).FirstOrDefault() ?? null;
+            var afterGame = after.Activities.Where(a => a.Type == ActivityType.Playing).FirstOrDefault() ?? null;
+            await PlayTimeRecorder.UpdatePlayTime(userId, after.Username, beforeGame?.ToString() ?? null, afterGame?.ToString() ?? null);
+            return;
         }
 
         public static int GetRandomNumber(int toExclusive)
