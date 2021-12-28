@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace DiscordBotCS.HttpResponseTemplates
+namespace DiscordBotCS.HttpResponseTemplates.PokeAPIPokemonResponse
 {
-    // Root myDeserializedClass = JsonSerializer.Deserialize<Root>(myJsonResponse);
     public class Ability2
     {
         [JsonPropertyName("name")]
