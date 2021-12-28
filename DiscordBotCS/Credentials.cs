@@ -11,6 +11,8 @@ namespace DiscordBotCS
         public string dictionaryApiKey { get; set; } = string.Empty;
         [JsonPropertyName("thesaurus-api-key")]
         public string thesaurusApiKey { get; set; } = string.Empty;
+        [JsonPropertyName("connection-string")]
+        public string connectionString { get; set; } = string.Empty;
 
         public static Credentials GetCredentials(string path = "credentials.json")
         {
