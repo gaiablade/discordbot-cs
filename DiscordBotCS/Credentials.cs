@@ -6,13 +6,15 @@ namespace DiscordBotCS
     public class Credentials
     {
         [JsonPropertyName("bot-token")]
-        public string token { get; set; } = string.Empty;
+        public string Token { get; set; } = string.Empty;
         [JsonPropertyName("dictionary-api-key")]
-        public string dictionaryApiKey { get; set; } = string.Empty;
+        public string DictionaryApiKey { get; set; } = string.Empty;
         [JsonPropertyName("thesaurus-api-key")]
-        public string thesaurusApiKey { get; set; } = string.Empty;
+        public string ThesaurusApiKey { get; set; } = string.Empty;
         [JsonPropertyName("connection-string")]
-        public string connectionString { get; set; } = string.Empty;
+        public string ConnectionString { get; set; } = string.Empty;
+        [JsonPropertyName("youtube-api-key")]
+        public string YoutubeApiKey { get; set; } = string.Empty;
 
         public static Credentials GetCredentials(string path = "credentials.json")
         {

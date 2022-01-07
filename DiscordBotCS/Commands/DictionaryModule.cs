@@ -17,7 +17,7 @@ namespace DiscordBotCS.Commands
             {
                 using var typing = this.Context.Channel.EnterTypingState();
 
-                var apiKey = DiscordBot.Credentials.dictionaryApiKey;
+                var apiKey = DiscordBot.Credentials.DictionaryApiKey;
                 // Plug requested word and api-key into url
                 var requestUrl = url.Replace("[WORD]", word).Replace("[APIKEY]", apiKey);
 

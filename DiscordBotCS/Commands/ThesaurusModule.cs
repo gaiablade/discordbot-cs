@@ -16,7 +16,7 @@ namespace DiscordBotCS.Commands
                 // for more useful comments
                 using var typing = this.Context.Channel.EnterTypingState();
 
-                var apiKey = DiscordBot.Credentials.thesaurusApiKey;
+                var apiKey = DiscordBot.Credentials.ThesaurusApiKey;
                 var requestUrl = url.Replace("[WORD]", word).Replace("[APIKEY]", apiKey).Trim();
 
                 var response = await DiscordBot.HttpClient.GetAsync(requestUrl);
