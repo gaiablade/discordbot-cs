@@ -33,7 +33,7 @@ namespace DiscordBotCS
             Client.GuildMemberUpdated += HandleGuildMemberUpdatedAsync;
 
             // Login and start bot
-            await Client.LoginAsync(TokenType.Bot, Credentials.token);
+            await Client.LoginAsync(TokenType.Bot, Credentials.Token);
             await Client.StartAsync();
 
             // Create command service, find and load all commands
@@ -85,10 +85,12 @@ namespace DiscordBotCS
         public async Task HandleGuildMemberUpdatedAsync(SocketGuildUser before, SocketGuildUser after)
         {
             if (before.IsBot) return;
-            var userId = after.Id;
+            var userID = after.Id;
             var beforeGame = before.Activities.Where(a => a.Type == ActivityType.Playing).FirstOrDefault() ?? null;
             var afterGame = after.Activities.Where(a => a.Type == ActivityType.Playing).FirstOrDefault() ?? null;
-            await PlayTimeRecorder.UpdatePlayTime(userId, after.Username, beforeGame?.ToString() ?? null, afterGame?.ToString() ?? null);
+            var serverID = before.Guild.Id;
+            var serverName = before.Guild.Name;
+            await PlayTimeRecorder.UpdatePlayTime(userID: userID, username: after.Username, serverID: serverID, serverName: serverName, before: beforeGame?.ToString() ?? null, after: afterGame?.ToString() ?? null);
             return;
         }
 
